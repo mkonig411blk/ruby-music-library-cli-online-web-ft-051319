@@ -1,7 +1,8 @@
 class Song 
+  # extend Concerns::Findable
   attr_accessor :name, :artist, :genre
   @@all = []
-  
+ 
   def initialize(name, artist = nil, genre = nil)
     @name = name
     self.artist = artist if artist
@@ -55,18 +56,6 @@ class Song
       genre.songs << self unless genre.songs.include?(self)
     end
     @genre
-  end
-  
-  def self.find_by_name(name)
-    @@all.detect {|song| song.name == name}
-  end 
-  ## iterate through all array and return first value where condition is true
-  
-  def self.find_or_create_by_name(name)
-    if find_by_name 
-    else 
-    end
-      
   end
     
 end
