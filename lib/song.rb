@@ -1,5 +1,5 @@
 class Song 
-  # extend Concerns::Findable
+  extend Concerns::Findable
   attr_accessor :name, :artist, :genre
   @@all = []
  
@@ -7,7 +7,6 @@ class Song
     @name = name
     self.artist = artist if artist
     self.genre = genre if genre
-    save
     end
   
   def self.all
@@ -57,5 +56,22 @@ class Song
     end
     @genre
   end
+   
+   def self.create_from_filename(filename)
+     @@all << self.new_from_filename(filename)
+   end
+   
+   def self.new_from_filename(filename)
+    #parse the filename
+    song_name = filename.split(" - ")[1]
+    artist_name = filename.split(" - ")[0]
+    genre_name = filename.split(" - ")[2].chomp(".mp3")
+    #create song and assign artist and genre attribute, & create connections
+    #prevent the creation of duplicate objects: songs, artists, genres
+    song = self.find_or_create_by_name(song_name)
+    song.artist = Artist.find_or_create_by_name(artist_name)
+    song.genre = Genre.find_or_create_by_name(genre_name)
+    song
+   end
     
 end
