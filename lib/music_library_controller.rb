@@ -80,8 +80,13 @@ class MusicLibraryController
     
     def play_song 
       puts "Which song number would you like to play?"
-      input = gets.chomp.downcase
       list_songs
+      input = gets.chomp.to_i
+      alpha_array = Song.all.sort {|a, b| a.name <=> b.name}.uniq
+      if input < alpha_array.count && input > 0
+      puts "Playing #{alpha_array[input-1].name} by #{alpha_array[input-1].artist.name}"
+    else 
+    end
     end 
   
 end
