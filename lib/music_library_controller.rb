@@ -72,7 +72,7 @@ class MusicLibraryController
         input = gets.chomp.downcase
         if genre = Genre.all.find {|genre| genre.name.downcase == input}
         alpha_array = genre.songs.sort {|a, b| a.name <=> b.name}.uniq
-        alpha_array.each_with_index{|genre, index| 
+        alpha_array.each_with_index{|song, index| 
         puts "#{index+1}. #{song.artist.name} - #{song.name}"}
       else 
       end
