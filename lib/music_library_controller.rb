@@ -68,12 +68,12 @@ class MusicLibraryController
     end
     
     def list_songs_by_genre
-         puts "Please enter the name of a genre:"
-        input = gets.chomp.downcase
-        if genre = Genre.all.find {|genre| genre.name.downcase == input}
-        alpha_array = genre.songs.sort {|a, b| a.name <=> b.name}.uniq
-        alpha_array.each_with_index{|song, index| 
-        puts "#{index+1}. #{song.artist.name} - #{song.name}"}
+          puts "Please enter the name of a genre:"
+          input = gets.chomp.downcase
+          if genre = Genre.all.find {|genre| genre.name.downcase == input}
+          alpha_array = genre.songs.sort {|a, b| a.name <=> b.name}.uniq
+          alpha_array.each_with_index{|song, index| 
+          puts "#{index+1}. #{song.artist.name} - #{song.name}"}
       else 
       end
     end 
