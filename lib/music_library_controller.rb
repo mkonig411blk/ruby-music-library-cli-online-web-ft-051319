@@ -25,7 +25,7 @@ class MusicLibraryController
           elsif command == "list genres"
               list_genres
           elsif command == "list artist"
-              list_songs_by_artist(gets.chomp.downcase)
+              list_songs_by_artist
           elsif  command == "list genre"
               list_songs_by_genre
           elsif command == "play song"
@@ -58,8 +58,8 @@ class MusicLibraryController
     
     def list_songs_by_artist(artist_name)
         puts "Please enter the name of an artist:"
-        
-        artist = Artist.all.find {|artist| artist.name.downcase == artist_name}
+        input = gets.chomp
+        artist = Artist.all.find {|artist| artist.name.downcase == input}
         artist.songs.each_with_index{|song, index| 
         puts "#{index+1}. #{song.name} - #{song.genre.name}"}
     end
