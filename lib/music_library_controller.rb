@@ -79,8 +79,8 @@ class MusicLibraryController
     end 
     
     def play_song 
-      puts "Which song number would you like to play?"
       list_songs
+      puts "Which song number would you like to play?"
       input = gets.chomp.to_i
       alpha_array = Song.all.sort {|a, b| a.name <=> b.name}.uniq
       if input < alpha_array.count && input > 0
