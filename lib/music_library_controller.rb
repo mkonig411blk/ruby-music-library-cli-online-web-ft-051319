@@ -60,6 +60,7 @@ class MusicLibraryController
         puts "Please enter the name of an artist:"
         input = gets.chomp
         artist = Artist.all.find {|artist| artist.name.downcase == input}
+        alpha_array = Song.all.sort {|a, b| a.name <=> b.name}.uniq
         artist.songs.each_with_index{|song, index| 
         puts "#{index+1}. #{song.name} - #{song.genre.name}"}
     end
