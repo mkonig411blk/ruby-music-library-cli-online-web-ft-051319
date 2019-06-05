@@ -67,7 +67,7 @@ class MusicLibraryController
       end
     end
     
-    def list_songs_by_genre(input)
+    def list_songs_by_genre
          puts "Please enter the name of a genre:"
         input = gets.chomp.downcase
         if genre = Genre.all.find {|genre| genre.name.downcase == input}
