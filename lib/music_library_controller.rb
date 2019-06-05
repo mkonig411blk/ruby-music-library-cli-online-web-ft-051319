@@ -59,10 +59,12 @@ class MusicLibraryController
     def list_songs_by_artist
         puts "Please enter the name of an artist:"
         input = gets.chomp.downcase
-        artist = Artist.all.find {|artist| artist.name.downcase == input}
+        if artist = Artist.all.find {|artist| artist.name.downcase == input}
         alpha_array = artist.songs.sort {|a, b| a.name <=> b.name}.uniq
         alpha_array.each_with_index{|song, index| 
         puts "#{index+1}. #{song.name} - #{song.genre.name}"}
+      else 
+      end
     end
     
     def list_songs_by_genre(input)
